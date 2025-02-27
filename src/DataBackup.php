@@ -55,16 +55,16 @@ class DataBackup extends Plugin
 
     private function attachEventHandlers(): void
     {
-        Event::on(
-            Cp::class,
-            Cp::EVENT_REGISTER_CP_NAV_ITEMS,
-            function(RegisterCpNavItemsEvent $event) {
-                $event->navItems[] = [
-                    'url' => 'data-backup',
-                    'label' => 'Data Backup'
-                ];
-            }
-        );
+        // Event::on(
+        //     Cp::class,
+        //     Cp::EVENT_REGISTER_CP_NAV_ITEMS,
+        //     function(RegisterCpNavItemsEvent $event) {
+        //         $event->navItems[] = [
+        //             'url' => 'data-backup',
+        //             'label' => 'Data Backup'
+        //         ];
+        //     }
+        // );
 
         Event::on(
             Elements::class,
