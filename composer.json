@@ -1,0 +1,39 @@
+{
+    "name": "imarc/craft-data-backup",
+    "description": "Allows the app to post JSON data to an endpoint, where it is saved in the craft database, and displayed in the CP.",
+    "type": "craft-plugin",
+    "license": "mit",
+    "support": {
+      "email": "info@imarc.com"
+    },
+    "require": {
+      "php": ">=8.3",
+      "craftcms/cms": "^5.0"
+    },
+    "require-dev": {
+      "craftcms/phpstan": "dev-main",
+      "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+      "psr-4": {
+        "imarc\\databackup\\": "src/"
+      }
+    },
+    "extra": {
+      "handle": "data-backup",
+      "name": "Data Backup",
+      "developer": "Linnea Hartsuyker",
+      "documentationUrl": "",
+      "class": "imarc\\databackup\\DataBackup"
+    },
+    "config": {
+      "sort-packages": true,
+      "platform": {
+        "php": "8.3"
+      },
+      "allow-plugins": {
+        "yiisoft/yii2-composer": true,
+        "craftcms/plugin-installer": true
+      }
+    }
+  }
