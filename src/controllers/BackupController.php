@@ -31,20 +31,18 @@ class BackupController extends Controller
     {
 
         $requestParams = $this->request->getBodyParams();
-        $dataSource = array_key_exists('source', $requestParams) ? $requestParams['source'] : null;
-        $dataBody = array_key_exists('data', $requestParams) ? $requestParams['data'] : null;
-        $syke = array_key_exists('syke', $requestParams) ? $requestParams['syke'] : null;
+        $dataSource = $requestParams['source'] ?? null;
+        $dataBody = $requestParams['data'] ?? null;
+        $syke = $requestParams['syke'] ?? null;
         $response = new Response();
 
         $this->element = new DataBackupElement();
 
-        if ($syke) {
-            $response->setStatusCode(500);
-            return $response;
-        }
-
-
         if ($dataSource && $dataBody) {
+            if ($syke) {
+                $response->setStatusCode(202);
+                return $response;
+            }
             $response->setStatusCode(200);
             $response->content = json_encode([
                 "dataSource" => $dataSource,
