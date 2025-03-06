@@ -113,4 +113,9 @@ class DataBackup extends Element
         return true;
     }
 
+    public function canDelete(User $user): bool
+    {
+        return true;
+    }
+
 }
