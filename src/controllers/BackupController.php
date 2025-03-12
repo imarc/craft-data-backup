@@ -20,14 +20,9 @@ class BackupController extends Controller
 
     protected ?DataBackupElement $element;
 
-    // protected array $params = [
-    //     "source" => "string",
-    //     "data" => "string"
-    // ];
 
     public function beforeAction($action): bool
     {
-        $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
     }
 
@@ -35,6 +30,7 @@ class BackupController extends Controller
     public function actionSave(): Response|string
     {
 
+        
         $requestParams = $this->request->getBodyParams();
         $dataSource = $requestParams['source'] ?? null;
         $dataBody = $requestParams['data'] ?? null;
@@ -75,10 +71,8 @@ class BackupController extends Controller
 
     public function actionSearch(): Response|string
     {
-        $requestParams = $this->request->getBodyParams();
+        $this->requireLogin();
         $search = $this->request->getParam("search") ?? null;
-
-        $response = new Response();
 
         $likeDataCondition = new \yii\db\conditions\LikeCondition('{{%databackup_data}}.data', 'LIKE', $search);
         $likeSourceCondition = new \yii\db\conditions\LikeCondition('{{%databackup_data}}.source', 'LIKE', $search);
