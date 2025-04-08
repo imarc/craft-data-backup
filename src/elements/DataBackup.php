@@ -62,7 +62,7 @@ class DataBackup extends Element
         if (!$this->propagating) {
             Db::upsert(self::DATA_TABLE, [
                 'id' => $this->id,
-                'data' => json_encode($this->data),
+                'data' => json_encode($this->data, JSON_PRETTY_PRINT),
                 'source' => $this->source,
             ]);
         }
